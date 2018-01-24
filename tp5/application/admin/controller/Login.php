@@ -1,10 +1,10 @@
 <?php
 
 namespace app\admin\controller;
-
 use app\admin\common\Base;
 use think\Request;
 use app\admin\model\Admin;
+use think\Session;
 class Login extends Base
 {
     
@@ -12,21 +12,21 @@ class Login extends Base
     public function index()
     {
         //
+        //$this -> alreadyLogin();
         return $this->view->fetch('login');
     }
 
     //验证用户身份
-    public function check(Request $request)
-    {
+    public function checkin(Request $request)
+    {    
         //设置status
         $status=0;
         //获取表单提交的数据，并保存在变量中
         $data =$request->param();
         $userName =$data['username'];
         $password =md5($data['password']);
-        //var_dump($userName);
         //在admin数据表查询以用户为条件
-        $map = ['username'=>$username];
+        $map = ['username'=>$userName];
         $admin = Admin::get($map);
         //将用户名和密码分开验证
         //如果没有查询到该用户

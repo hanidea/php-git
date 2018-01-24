@@ -45,19 +45,19 @@
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <td>1</td>
-            <td>admin</td>
-            <td>18925139194</td>
-            <td>113664000@qq.com</td>
+            <td>{$admin.id}</td>
+            <td>{$admin.username}</td>
+            <td>{$admin.login_count}</td>
+            <td>{$admin.email}</td>
             <td>超级管理员</td>
-            <td>2017-01-01 11:11:42</td>
+            <td>{$admin.last_time}</td>
             <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
             <td class="td-manage">
               <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
                 <i class="layui-icon">&#xe601;</i>
               </a>
-              <a title="编辑"  onclick="x_admin_show('编辑','admin-edit.html')" href="javascript:;">
+              <a title="编辑"  onclick="x_admin_show('编辑','{:url("admin/edit")}'+'?id='+{$admin.id})" href="javascript:;">
                 <i class="layui-icon">&#xe642;</i>
               </a>
               <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">

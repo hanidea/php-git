@@ -1,0 +1,76 @@
+{include file='public/header'/}
+  
+  <body>
+    <div class="x-body">
+        <form class="layui-form">
+          <div class="layui-form-item">
+              <label for="username" class="layui-form-label">
+                  <span class="x-red">*</span>登录名
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="username" name="username" required="" value="{$admin.username}" class="layui-input" disabled>
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red">*</span>登录名不得修改
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="L_email" class="layui-form-label">
+                  <span class="x-red">*</span>邮箱
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" value="{$admin.email}" id="email" name="email" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red">*</span>
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="L_pass" class="layui-form-label">
+                  <span class="x-red">*</span>密码
+              </label>
+              <div class="layui-input-inline">
+                  <input type="password" id="password" name="password" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  6到16个字符
+              </div>
+          </div>
+          <!--添加隐藏字段-->
+          <input type="hidden" name="id" value="{$Think.session.user_info.id}">
+          <input type="hidden" name="is_update" value="{$Think.session.user_info.id}">
+          <div class="layui-form-item">
+              <label for="L_repass" class="layui-form-label">
+              </label>
+              <button  class="layui-btn" lay-filter="add" lay-submit="" id="submit">
+                  增加
+              </button>
+          </div>
+      </form>
+    </div>
+    <script>
+         $(function(){
+            $("#submit").on('click',function(){
+                $.ajax({
+                type:"post",
+                url:"{:url('admin/update')}",
+                data:$('.layui-form').serialize(),
+                dataType:"json",
+                success:function(data) {
+                //alert(data.status);
+                if(data.status == 1){
+                     alert(data.message);
+                     window.location.href="{:url('index/index')}";
+                }else{
+                     alert(data.message);
+                     window.location.href="{:url('login/index')}";
+                }
+                }
+                });
+            })
+        })
+    </script>
+    
+  </body>
+
+</html>

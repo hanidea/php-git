@@ -6,9 +6,9 @@
         <div id="darkbannerwrap"></div>
         
         <form method="post" class="layui-form" >
-            <input name="username" id="name" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
+            <input name="username" id="username" placeholder="用户名"  type="text" class="layui-input" >
             <hr class="hr15">
-            <input name="password" id="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
+            <input name="password" id="password" placeholder="密码"  type="password" class="layui-input">
             <hr class="hr15">
             <div class="layui-form-item" >
             <button class="layui-btn" style="width:100%;" type="button" id="loginbtn" lay-submit=" " lay-filter="save">登录</button>
@@ -17,30 +17,24 @@
         </form>
     </div>
     <script>
-    $(function()
-    {
-        $("#loginbtn").on('click',function()
-        {
-            $.ajax(
-                {
-                    type:'POST',
-                    url:"{:url('login/check')}",
-                    data:$(".layui-form").serialize(),
-                    dataType:"json",
-                    function(data)
-                    {
-                        if(data.status==1)
-                        {
-                            alert(data.message);
-                            window.location.href="{:url('index/index')}";
-                        }else{
-                            alert(data.message);
-                            window.location.href="{:url('login/index')}";
-                        }
-                    }
-                }
-            )
-
+    $(function(){
+        $("#loginbtn").on('click',function(){
+            $.ajax({
+            type:"post",
+            url:"{:url('login/checkin')}",
+            data:$('.layui-form').serialize(),
+            dataType:"json",
+            success:function(data) {
+            //alert(data.status);
+            if(data.status == 1){
+                 alert(data.message);
+                 window.location.href="{:url('index/index')}";
+            }else{
+                 alert(data.message);
+                 window.location.href="{:url('login/index')}";
+            }
+            }
+            });
         })
     })
     </script>
