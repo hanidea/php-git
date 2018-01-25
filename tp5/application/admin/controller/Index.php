@@ -5,7 +5,7 @@ class Index extends Base
 {
     public function index()
     {
-        //$this -> isLogin();
+        $this -> isLogin();
         return $this->view->fetch('index');
     }
     public function welcome()
