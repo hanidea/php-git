@@ -24,9 +24,9 @@ class System extends Base
 
             //获取提交的数据
             $data = $request -> param();
-
+            //$data = array_filter($request->param());
             //设置一下更新条件
-            $map = ['is_update'=> $data['is_update']];
+            $map = ['is_update'=> 1];
 
             //执行更新操作
             $res = SystemModel::update($data, $map);
