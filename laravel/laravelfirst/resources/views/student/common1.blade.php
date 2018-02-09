@@ -1,0 +1,1 @@
+<p>common blade</p>
