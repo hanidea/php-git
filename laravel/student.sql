@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.5
+-- version 4.7.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Feb 09, 2018 at 09:44 AM
--- Server version: 5.6.38
--- PHP Version: 7.1.12
+-- Generation Time: Feb 11, 2018 at 10:17 PM
+-- Server version: 5.6.35
+-- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -34,14 +34,18 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `name`, `age`, `sex`, `created_at`, `updated_at`) VALUES
-(1, 'icool4', 22, NULL, NULL, NULL),
-(2, 'icool3', 23, NULL, NULL, NULL),
-(3, 'icool4', 22, NULL, NULL, NULL),
-(6, 'icool3', 23, NULL, NULL, NULL),
-(7, 'icool4', 22, NULL, NULL, NULL),
-(8, 'icool3', 23, NULL, NULL, NULL),
-(9, 'james', 18, NULL, 20180209, 20180209),
-(10, 'david', 19, NULL, NULL, NULL);
+(1, 'icool4', 21, 30, 1518331691, 1518331691),
+(18, 'james', 20, 20, 1518334550, 1518334550),
+(17, 'icool3', 40, 20, 1518331691, 1518331691),
+(16, 'icool2', 40, 30, 1518331691, 1518331691),
+(15, 'icool7', 20, 20, 1518331691, 1518331691),
+(19, 'joe', 40, 30, 1518335080, 1518335080),
+(20, 'jenny', 40, 20, 1518335321, 1518335321),
+(30, 'hanidea', 40, 30, 1518354256, 1518354256),
+(23, 'jey', 40, 20, 1518337012, 1518337012),
+(24, 'jun', 40, 20, 1518337036, 1518337036),
+(25, 'david', 40, 30, 1518338356, 1518338356),
+(28, 'jessie', 40, 30, 1518353872, 1518353872);
 
 --
 -- Indexes for dumped tables
@@ -61,4 +65,4 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
