@@ -59,6 +59,37 @@ Route::any('url',[
     'as'=>'url',
     'uses'=>'StudentController@urlTest'
 ]);
+Route::any('request1',[
+    'uses'=>'StudentController@request1'
+]);
+Route::group(['middleware'=>['web']],function()
+{
+    Route::any('session1',[
+        'uses'=>'StudentController@session1'
+    ]);
+    Route::any('session2',[
+        'as'=>'session2',
+        'uses'=>'StudentController@session2'
+    ]);
+    
+});
+Route::any('response1',[
+    'uses'=>'StudentController@response1'
+]);
+//宣传页面
+Route::any('activity1',[
+    'uses'=>'StudentController@activity1'
+]);
+//活动页面
+Route::group(['middleware'=>['activity']],function()
+{
+Route::any('activity2',[
+    'uses'=>'StudentController@activity2'
+]);
+Route::any('activity3',[
+    'uses'=>'StudentController@activity3'
+]);
+});
 // //基础路由
 // Route::get('basic1', function (){
 //     return 'get Hello World';

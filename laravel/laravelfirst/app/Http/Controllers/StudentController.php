@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 Use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use App\Student;
+use Illuminate\Support\Facades\Session;
+//use Illuminate\Contracts\Routing\ResponseFactory;
+
 class StudentController extends Controller
 {
     public function student1()
@@ -184,5 +188,108 @@ class StudentController extends Controller
     public function urlTest()
     {
         return 'urlTest';
+    }
+    public function request1(Request $request)
+    {
+        //1.取值
+        //echo $request->input('name');
+        //echo $request->input('sex','未知');
+        // if($request->has('name')){
+        //     echo $request->input('name');
+        // }else{
+        //     echo'无该参数';
+        // }
+        // $res= $request->all();
+        // dd($res);
+        //2.判断请求类型
+        //echo $request->method();
+        // if($request->isMethod('GET')){
+        //     echo 'Yes';
+        // }else{
+        //     echo 'No';
+        // }
+        // $res=$request->ajax();
+        // var_dump($res);
+        // $res=$request->is('student/*');
+        // var_dump($res);
+        echo $request->url();
+    }
+    public function session1(Request $request)
+    {
+        //1.Http request session;
+        // $request->session()->put('key1','value1');
+        // echo $request->session()->get('key1');
+        //2.session()
+        // session()->put('key2','value2');
+        // echo session()->get('key2');
+        //3.session()
+        // Session::put('key3','value3');
+        // echo Session::get('key3');
+        //Session::put(['key4'=>'value4']);
+        // Session::push('student','james');
+        // Session::push('student','imooc');
+        // $res=Session::get('student','default');
+        // var_dump($res);
+        //一次之后清除
+        // $res=Session::pull('student','default');
+        // var_dump($res);
+        // $res = Session::all();
+        // dd($res);
+        // if(Session::has('key13')){
+        //     $res = Session::all();
+        //     dd($res);
+        // }
+        // else{
+        //     echo '老大不在';
+        // }
+        //暂存数据一次
+        Session::flash('key-flash','val-flash');
+    }
+    public function session2(Request $request)
+    {
+        //echo Session::get('key-flash');
+        // $res = Session::all();
+        // var_dump($res);
+        // Session::forget('key2');
+        // $res = Session::all();
+        // var_dump($res);
+        //return 'session2';
+        return Session::get('message','default');
+        //Session::flush();
+       
+    }
+    public function response1()
+    {
+        // $data =[
+        //     'errCode'=>0,
+        //     'errMsg'=>'success',
+        //     'data'=>'james',
+        // ];
+        //var_dump($data);
+        //json
+        //return response()->json($data);
+        //重定向
+        //return redirect('session2');
+        //return redirect('session2')->with('message','我是session');
+        //action
+        //return redirect()->action('StudentController@session2')->with('message','我是session');
+        //route()
+        //return redirect()->route('session2')->with('message','我是session');
+        //返回上一级
+        return redirect()->back();
+
+    }
+    //中间件
+    public function activity1(){
+        return '活动快要开始了';
+
+    }
+    public function activity2(){
+        return '活动进行中';
+
+    }
+    public function activity3(){
+        return '谢谢您的参与';
+
     }
 }
