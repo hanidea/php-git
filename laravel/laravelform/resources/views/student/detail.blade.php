@@ -23,11 +23,11 @@
                     </tr>
                     <tr>
                         <td>添加日期</td>
-                        <td>{{date('Y-m-d',$student->created_at)}}</td>
+                        <td>{{date('Y-m-d H:i:s',$student->created_at)}}</td>
                     </tr>
                     <tr>
                         <td>最后修改</td>
-                        <td>{{date('Y-m-d',$student->updated_at)}}</td>
+                        <td>{{date('Y-m-d H:i:s',$student->updated_at)}}</td>
                     </tr>
                     </tbody>
                 </table>
