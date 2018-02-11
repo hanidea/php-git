@@ -13,6 +13,7 @@
                         <th>年龄</th>
                         <th>性别</th>
                         <th>添加时间</th>
+                        <th>更新时间</th>
                         <th width="120">操作</th>
                     </tr>
                     </thead>
@@ -23,7 +24,9 @@
                             <td>{{$student->name}}</td>
                             <td>{{$student->age}}</td>
                             <td>{{$student->getSex(htmlspecialchars($student->sex))}}</td>
-                            <td>{{date('Y-m-d',$student->created_at)}}</td>
+                            <!-- <td>{{date('Y-m-d',$student->created_at)}}</td> -->
+                            <td>{{date('Y-m-d H:i:s',$student->created_at)}}</td>
+                            <td>{{date('Y-m-d H:i:s',$student->updated_at)}}</td>
                             <td>
                                 <a href="{{ url('student/detail', ['id' => $student->id]) }}">详情</a>
                                 <a href="{{ url('student/update', ['id' => $student->id]) }}">修改</a>
