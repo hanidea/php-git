@@ -13,8 +13,8 @@ class Article_model extends CI_Model
         //获取查询结果
         $query = $this->db->get();
         //return $query->row_array();//单条
-        //return $query->result_array();//多条数组
+        return $query->result_array();//多条数组
         //return $query->result();//多条对象
-        return $query->row(); //单条对象
+        //return $query->row(); //单条对象
     }
 }
