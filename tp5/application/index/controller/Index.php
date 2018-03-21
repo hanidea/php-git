@@ -8,4 +8,8 @@ class Index extends Base
     {
         return '<h1>网站开启状态</h1>';
     }
+    public function hello()
+    {
+        return '<h1>hello</h1>';
+    }
 }
