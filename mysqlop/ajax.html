@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax request</title>
+    <!-- <script>
+        function succes(data) {
+            console.log(data);
+        }
+        function fail(data){
+            console.log(data);
+        }
+        // new 一个request的实例
+        // var request = new XMLHttpRequest();
+        var request;
+        if (window.XMLHttpRequest){
+            request = new XMLHttpRequest();
+        }else{
+            request = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        // http请求状态变化 回调
+        request.onreadystatechange = function (){
+        //成功完成
+            if (request.readyState === 4){
+                if(request.status === 200){
+                    return succes(request.responseText);
+                } else {
+                    return fail(request.responseText);
+                }
+            } else {
+
+            }
+        }
+        //发送请求
+        request.open('GET','http://localhost:8888/mysqlop/mysqli.php?id=6');
+        request.send();
+    </script> -->
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        // url setting
+        // async 表示是否异步执行ajax请求，默认是true
+        // method 发送请求的方法，默认GET
+        // contentType 发送post请求的格式application/json
+        // data 发送数据
+        // headers http的headers
+        // datatype 接受的数据格式
+        // $.ajax('http://localhost:8888/mysqlop/mysqli.php?id=6',{
+        //     datatype:'json'
+        // }).done(function (data) {
+        //     console.log('success',data);
+        // }).fail(function(xhr,status){
+        //     console.log(xhr.status);
+        // })
+        // $.get('http://localhost:8888/mysqlop/mysqli.php',{
+        //     id: 1
+        // }).done(function(data){
+        //     console.log(data);
+        // }).fail(function(xhr,status){
+        //     console.log(xhr.status);
+        // })
+
+        // $.post('http://localhost:8888/mysqlop/mysqli.php',{
+        //     id: 6
+        // }).done(function(data){
+        //     console.log('post',data);
+        // }).fail(function(xhr,status){
+        //     console.log(xhr.status);
+        // })
+        $.getJSON('http://localhost:8888/mysqlop/mysqli.php', {
+            id: 1
+        }).done(function(data){
+            console.log('json',data);
+        }).fail(function(xhr,status){
+            console.log(xhr.status);
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
