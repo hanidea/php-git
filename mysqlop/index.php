@@ -39,7 +39,8 @@ class App
      * 分页查询
      */
     public function pagination($pageSize,$pageIndex){
-        $sql = "select id,name from eacoo_attachment where path_type='picture' limit ? offset ?";
+        //$sql = "select id,name from eacoo_attachment where path_type='picture' limit ? offset ?";
+        $sql = "select id,name from eacoo_attachment limit ? offset ?";
         $limit = $pageSize;
         $offset = $pageSize * ($pageIndex - 1);
         // $data = $this->db->query($sql, [$limit,$offset]);
@@ -53,9 +54,10 @@ class App
      * 多少页
      */
     public function getCount(){
-        $sql = "select count(id) as count from eacoo_attachment where path_type='picture'";
+        // $sql = "select count(id) as count from eacoo_attachment where path_type='picture'";
+        $sql = "select count(id) as count from eacoo_attachment";
         $data = $this->db->query($sql);
-        var_dump($data);
+        // var_dump($data);
         return $data[0]['count'];
     }
     /**
@@ -70,6 +72,7 @@ class App
         ];
 
         return json_encode($content);
+        // return $content;
     }
     /**
      * 返回数据
@@ -81,10 +84,13 @@ class App
             'info' => $data,
         ];
         return json_encode($content);
+        // return $content;
     }
 }
 
 $app = new App();
 $re = $app->run();
 echo $re;
+// $app->run();
+
 ?>

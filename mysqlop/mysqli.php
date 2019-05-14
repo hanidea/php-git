@@ -33,8 +33,9 @@ $stmt->execute();
 $re = $stmt->get_result();
 $data = $re->fetch_all(MYSQLI_ASSOC);
 
-var_dump($data);
-
+//var_dump($data);
+$tc = json_encode($data);
+echo $tc;
 // 关闭
 $re->close();
 $mysqli->close(); 
