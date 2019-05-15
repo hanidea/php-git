@@ -15,20 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/get-demo',function (){
-    getParams();
-});
+Route::get('/user/login',['uses'=>'JwtLoginController@login']);
+Route::get('/get-demo',['uses'=>'Controller@index']);
 
 Route::post('/post-form-urlencode',function(){
     postFormUrlEncode();
 });
 
 Route::post('/post-form-data',function(){
-    echo 11;
+    postFormData();
 });
 
 Route::post('/post-json',function(){
-    echo 11;
+    postJson();
 });
 
 function getParams(){
@@ -45,3 +44,22 @@ function postFormUrlEncode(){
     echo $firstParam . ' ' .$secondParam;
 }
 
+function postFormData(){
+    print_r($_POST);
+    $firstParam = $_POST['first_param'];
+    $secondParam = $_POST['second_param'];
+    echo $firstParam . ' ' .$secondParam;
+}
+
+function postJson(){
+    // print_r($_POST);
+    // $firstParam = $_POST['first_param'];
+    // $secondParam = $_POST['second_param'];
+    // echo $firstParam . ' ' .$secondParam;
+    $re = file_get_contents("php://input");
+    $reArr = json_decode($re,true);
+    print_r($reArr);
+    $firstParam = $reArr['first_param'];
+    $secondParam = $reArr['second_param'];
+    echo $firstParam . ' ' .$secondParam;
+}
