@@ -17,7 +17,7 @@ class JwtAuth
     private $iss = 'laravelapi.com:8888';
     private $aud = 'laravelapi';
     private $uid;
-    private $secrect = 'swfsff#W#2r3efewefss';
+    private $secret = 'swfsff#W#2r3efewefss';
     private $decodeToken;
     private static $instance;
 
@@ -58,11 +58,11 @@ class JwtAuth
         $time = time();
         $this->token = (new Builder())->setHeader('alg','HS256')
              ->setIssuer($this->iss)
-             ->setAudience('$this->aud')
+             ->setAudience($this->aud)
              ->setIssuedAt($time)
              ->setExpiration($time + 3600)
              ->set('uid',$this->uid)
-             ->sign(new Sha256(),$this->secrect)
+             ->sign(new Sha256(),$this->secret)
              ->getToken();
         return $this;
     }

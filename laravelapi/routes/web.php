@@ -17,10 +17,10 @@ Route::get('/', function () {
 
 Route::get('/user/login',['uses'=>'JwtLoginController@login']);
 
-// Route::group(['middleware' => ['jwt_auth']], function () {
-//     Route::get('/user/info', ['uses'=>'UserController@info']);
-// });
-Route::get('/user/info', ['middleware'=>'jwt_auth', 'uses'=>'UserController@info']);
+Route::group(['middleware' => ['jwt_auth']], function () {
+    Route::get('/user/info', ['uses'=>'UserController@info']);
+});
+// Route::get('/user/info', ['middleware'=>'jwt_auth', 'uses'=>'UserController@info']);
 
 Route::get('/get-demo',['uses'=>'Controller@index']);
 

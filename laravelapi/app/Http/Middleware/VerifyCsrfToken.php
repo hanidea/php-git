@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
-// use Closure;
+use Closure;
 
 class VerifyCsrfToken extends Middleware
 {
@@ -23,11 +23,17 @@ class VerifyCsrfToken extends Middleware
         //
         // 'laravelapi.com:8888/*', 
     ];
-//     public function handle($request, Closure $next)
-//     {
-//         // 使用CSRF
-// //        return parent::handle($request, $next);
-//         // 禁用CSRF
-//         return $next($request);
-//     }
+    // public function handle($request, Closure $next)
+    // {
+    //     // 使用CSRF
+    //     // echo 1213;
+    //     // var_dump($request, $next($request));
+    //     // die();
+    //     $aaa = $next($request);
+    //     var_dump($aaa);
+    //     die();
+    //     return parent::addCookieToResponse($request, $next($request));
+    //     // 禁用CSRF
+    //     //return $next($request);
+    // }
 }
