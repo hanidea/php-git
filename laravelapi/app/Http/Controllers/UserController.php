@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Redis;
 use App\Common\Auth\JwtAuth;
 use App\User;
 use App\Http\Response\ResponseJson;
@@ -13,11 +14,10 @@ class UserController extends UserBaseController{
      * 修改用户
      */
     public function info(){
-        // echo 3;
         //  $jwtAuth = JwtAuth::getInstance();
         //  var_dump(JwtAuth::getInstance());
         //  $uid =  $jwtAuth->getUid();
-        $uid = $this->get();
+        $uid = $this->uidGet();
         $user = User::where('id',$uid)->first();
         if (!$user){
             throw new ApiException(ApiErrDesc::ERR_USER_NOT_EXIST);
@@ -30,13 +30,15 @@ class UserController extends UserBaseController{
 
     public function infoWithCache(){
         //$uid = $this->get();
-        $cacheUserInfo = Redis::get('uid:'.$this->get());
+        $uid = $this->uidGet();
+        $cacheUserInfo = Redis::get('id:'.$uid);
+        // $user = User::where('id',$uid)->first(); 
         if(!$cacheUserInfo){
-            $user = User::where('uid',$this->get())->first();
+            $user = User::where('id',$uid)->first();
             if(!user){
                 throw new ApiException(ApiErrDesc::ERR_USER_NOT_EXIST);
             }
-            Redis::setex('uid:'.$this->get(),3600,json_encode($user->toArray()));
+            Redis::setex('id:'.$uid,3600,json_encode($user->toArray()));
         }else {
             $user = json_decode($cacheUserInfo);
         }

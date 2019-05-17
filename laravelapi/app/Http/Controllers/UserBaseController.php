@@ -11,13 +11,11 @@ class UserBaseController extends BaseController
     // public function __construct()
     // {
     //     parent::__construct();
-    //     echo 2;
     //     $this->uid = JwtAuth::getInstance()->getUid();
     //     var_dump(JwtAuth::getInstance());
-    //     // die();
     // }
 
-    public function get()
+    public function uidGet()
     {
         $this->uid = JwtAuth::getInstance()->getUid();
         return $this->uid;
