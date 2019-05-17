@@ -53,6 +53,16 @@ class JwtAuth
         $this->uid = $uid;
         return $this;
     }
+    
+    /**
+     * 得到 解密过后的 uid
+     * @return mixed
+     */
+    public function getUid()
+    {
+        return $this->uid;
+    }
+
 
     public function encode(){
         $time = time();
