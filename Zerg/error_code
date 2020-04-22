@@ -30,3 +30,12 @@
 80001 订单中的商品不存在，可能已被删除
 80002 订单还未支付，却尝试发货
 80003 订单已支付过
+
+
+http://tp.com/api/v1/product/recent?count=15
+http://tp.com/api/v1/banner/0.1
+http://tp.com/api/v1/theme?ids=4
+http://tp.com/api/v1/category/all
+http://tp.com/api/v1/product/by_category?id=3
+http://tp.com/api/v1/product/2
+http://tp.com/api/v1/address

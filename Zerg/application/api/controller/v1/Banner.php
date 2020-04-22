@@ -2,6 +2,7 @@
 
 
 namespace app\api\controller\v1;
+use app\api\model\Image;
 use app\api\validate\IDMustBePositiveInt;
 use app\api\model\Banner as BannerModel;
 use app\lib\exception\BannerMissException;
@@ -21,6 +22,6 @@ class Banner
         if(!$banner){
             throw new BannerMissException();
         }
-        return json($banner);
+        return $banner;
     }
 }
